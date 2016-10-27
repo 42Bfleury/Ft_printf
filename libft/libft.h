@@ -6,7 +6,7 @@
 /*   By: bfleury <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:24:57 by bfleury           #+#    #+#             */
-/*   Updated: 2016/06/09 06:11:12 by bfleury          ###   ########.fr       */
+/*   Updated: 2016/10/27 17:49:07 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void				ft_strclr(char *s);
 void				ft_putchar(char c);
 void				ft_memdel(void **ap);
 void				ft_strdel(char **as);
+void				ft_putfloat(float d);
 void				ft_printbit_int(int n);
 void				ft_printbit_char(char n);
 void				ft_printbit_long(long n);

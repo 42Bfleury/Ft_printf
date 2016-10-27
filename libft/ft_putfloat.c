@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putfloat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfleury <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bfleury <benjamin.fleury@hotmail.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/26 13:48:42 by bfleury           #+#    #+#             */
-/*   Updated: 2016/10/27 18:21:30 by bfleury          ###   ########.fr       */
+/*   Created: 2016/10/27 17:51:02 by bfleury           #+#    #+#             */
+/*   Updated: 2016/10/27 17:51:22 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include "../Libft/includes/libft.h"
+void		ft_putfloat(float d)
+{
+	int		i;
 
-int		ft_printf(const char *str, ...);
-
-#endif
+	i = 0;
+	ft_putnbr((int)d);
+	d -= (int)d;
+	ft_putchar('.');
+	if (d)
+	{
+		while (i++ < 6)
+			d *= 10;
+		ft_putnbr(d);
+	}
+	else
+		ft_putstr("000000");
+}
