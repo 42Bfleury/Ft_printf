@@ -6,7 +6,7 @@
 /*   By: bfleury <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 13:48:42 by bfleury           #+#    #+#             */
-/*   Updated: 2016/10/27 18:21:30 by bfleury          ###   ########.fr       */
+/*   Updated: 2016/10/30 02:40:45 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "../Libft/includes/libft.h"
+# include "libft/includes/libft.h"
+
+typedef struct		s_printf
+{
+	int				length;
+	char			*format;
+	char			*result;
+}					t_printf;
 
 int		ft_printf(const char *str, ...);
 

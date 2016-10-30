@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strlower.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfleury <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bfleury <benjamin.fleury@hotmail.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 02:15:53 by bfleury           #+#    #+#             */
-/*   Updated: 2016/10/29 22:37:27 by bfleury          ###   ########.fr       */
+/*   Created: 2016/10/30 02:32:00 by bfleury           #+#    #+#             */
+/*   Updated: 2016/10/30 02:35:03 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+char	*ft_strlower(char *str)
 {
-	int		i;
-	char	*result;
+	char	*ptr;
 
-	if (!s || !(result = ft_strnew(len)))
-		return (NULL);
-	i = 0;
-	while (len--)
-		result[i++] = s[start++];
-	return (result);
+	ptr = str;
+	while (*ptr)
+	{
+		if (*ptr >= 'A' && *ptr <= 'Z')
+			*ptr = *ptr - 'A' + 'a';
+		ptr++;
+	}
+	return (str);
 }
