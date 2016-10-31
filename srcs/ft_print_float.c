@@ -6,7 +6,7 @@
 /*   By: bfleury <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 18:18:56 by bfleury           #+#    #+#             */
-/*   Updated: 2016/10/30 20:06:00 by bfleury          ###   ########.fr       */
+/*   Updated: 2016/10/31 15:16:08 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int		ft_print_float(double nb)
 {
 	ft_putfloat(nb);
-	return (ft_nblen(nb) + 7);
+	return (ft_longlen(nb) + 7);
 }

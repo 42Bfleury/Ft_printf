@@ -6,18 +6,20 @@
 /*   By: bfleury <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 18:16:01 by bfleury           #+#    #+#             */
-/*   Updated: 2016/10/30 20:05:43 by bfleury          ###   ########.fr       */
+/*   Updated: 2016/10/31 16:53:15 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		ft_print_octal(unsigned int nb)
+int		ft_print_octal(long nb)
 {
+	int		length;
 	char	*str;
 
-	str = ft_itoa_base(nb, 8);
+	str = ft_ltoa_base(nb, 8);
 	ft_putstr(str);
+	length = ft_strlen(str);
 	free(str);
-	return (ft_nblen(nb));
+	return (length);
 }
