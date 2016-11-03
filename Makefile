@@ -110,7 +110,6 @@ SRC			= ft_printf.c \
 			ft_parse_format.c \
 			ft_convert_format.c \
 			ft_print_int.c \
-			ft_print_str.c \
 			ft_print_octal.c \
 			ft_print_float.c \
 			ft_print_hexa.c
@@ -134,11 +133,24 @@ clean:
 			@rm -f $(OBJLIB) $(OBJ)
 			@echo "Objects removed with success!"
 
-fclean:		clean
+lclean:
 			@echo "Removing $(NAME)..."
 			@rm -f $(NAME)
-			@echo "$(NAME) removed removed with success!"
+			@echo "$(NAME) removed with success!"
+
+fclean:		clean lclean
 
 re:			fclean all
 
-.PHONY:		clean
+test:		all clean
+			@$(CC) $(CFLAGS) -I includes -L . -lftprintf -o test main.c
+			@echo "Executable test generated with success!"
+
+xclean:
+			@echo "Removing executable test..."
+			@rm -f test
+			@echo "Executable test removed with success!"
+
+retest:		lclean xclean test
+
+.PHONY:		clean fclean
