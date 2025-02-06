@@ -6,7 +6,7 @@
 /*   By: bfleury <bfleury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 00:12:01 by bfleury           #+#    #+#             */
-/*   Updated: 2024/03/27 16:58:13 by bfleury          ###   ########.fr       */
+/*   Updated: 2025/02/06 21:40:45 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,4 @@ int	_print_unsigned_integer(unsigned int nb);
 int	_print_pointer(unsigned long long pointer);
 int	_print_hexa_lower(unsigned long long nb);
 int	_print_hexa_upper(unsigned int nb);
-#	endif
+#endif
