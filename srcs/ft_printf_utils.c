@@ -6,11 +6,11 @@
 /*   By: bfleury <bfleury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 00:12:25 by bfleury           #+#    #+#             */
-/*   Updated: 2024/03/23 00:37:48 by bfleury          ###   ########.fr       */
+/*   Updated: 2025/02/08 15:06:18 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	_print_char(int c)
 {

@@ -5,27 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bfleury <bfleury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/23 00:12:15 by bfleury           #+#    #+#              #
-#    Updated: 2025/02/09 01:23:14 by bfleury          ###   ########.fr        #
+#    Created: 2024/01/04 23:06:16 by bfleury           #+#    #+#              #
+#    Updated: 2025/02/09 01:21:40 by bfleury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-NAME				= libftprintf.a
-
-PRINTF				= libprintf.a
-
-LIB					= libft.a
-LIB_DIR				= libft
+NAME				= libft.a
 
 CC					= cc
 CFLAGS				= -Wall -Wextra -Werror
 
-FILES				= ft_printf.c			\
-					ft_printf_utils.c		\
-					ft_printf_utils_hexa.c
-
-LIB_FILES			= ft_atoi.c				\
+FILES				= ft_atoi.c				\
 					ft_bzero.c				\
 					ft_calloc.c				\
 					ft_isalnum.c			\
@@ -60,7 +50,7 @@ LIB_FILES			= ft_atoi.c				\
 					ft_tolower.c			\
 					ft_toupper.c
 
-LIB_B_FILES			= ft_lstadd_back.c		\
+B_FILES				= ft_lstadd_back.c		\
 					ft_lstadd_front.c		\
 					ft_lstclear.c			\
 					ft_lstdelone.c			\
@@ -73,31 +63,22 @@ LIB_B_FILES			= ft_lstadd_back.c		\
 SRCS_DIR			= srcs
 SRCS				= $(addprefix $(SRCS_DIR)/, $(FILES))
 
+B_SRCS_DIR			= bonus_srcs
+B_SRCS				= $(addprefix $(B_SRCS_DIR)/, $(B_FILES))
+
 OBJS_DIR			= objs
 OBJS				= $(FILES:%.c=$(OBJS_DIR)/%.o)
+B_OBJS				= $(B_FILES:%.c=$(OBJS_DIR)/%.o)
 
-LIB_SRCS_DIR		= $(LIB_DIR)/srcs
-LIB_SRCS			= $(addprefix $(LIB_SRCS_DIR)/, $(LIB_FILES))
+all:				$(NAME)
 
-LIB_B_SRCS_DIR		= $(LIB_DIR)/bonus_srcs
-LIB_SRCS			+= $(addprefix $(LIB_B_SRCS_DIR)/, $(LIB_B_FILES))
-
-LIB_OBJS			= $(LIB_FILES:%.c=$(OBJS_DIR)/%.o)
-LIB_OBJS			+= $(LIB_B_FILES:%.c=$(OBJS_DIR)/%.o)
-
-$(NAME):			$(OBJS_DIR) $(OBJS) $(LIB_OBJS)
-					@ar rc $(NAME) $(OBJS) $(LIB_OBJS)
+$(NAME):			$(OBJS_DIR) $(OBJS)
+					@ar rc $(NAME) $(OBJS)
 					@ranlib $(NAME)
 
-$(PRINTF):			$(OBJS_DIR) $(OBJS)
-					@ar rc $(PRINTF) $(OBJS)
-					@ranlib $(PRINTF)
-
-$(LIB):				$(OBJS_DIR) $(LIB_OBJS)
-					@ar rc $(LIB) $(LIB_OBJS)
-					@ranlib $(LIB)
-
-all:				$(NAME) $(PRINTF) $(LIB)
+bonus:				$(OBJS_DIR) $(OBJS) $(B_OBJS)
+					@ar rc $(NAME) $(OBJS) $(B_OBJS)
+					@ranlib $(NAME)
 
 $(OBJS_DIR):
 					@mkdir -p objs
@@ -105,17 +86,14 @@ $(OBJS_DIR):
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJS_DIR)/%.o:	$(LIB_SRCS_DIR)/%.c
-					@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_DIR)/%.o:	$(LIB_B_SRCS_DIR)/%.c
+$(OBJS_DIR)/%.o:	$(B_SRCS_DIR)/%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 					@rm -rf $(OBJS_DIR)
 
-fclean:				clean
-					@rm -f $(NAME) $(PRINTF) $(LIB)
+fclean: 			clean
+					@rm -f $(NAME)
 
 re:					fclean all
 
