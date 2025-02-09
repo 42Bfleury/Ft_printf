@@ -6,17 +6,12 @@
 #    By: bfleury <bfleury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/23 00:12:15 by bfleury           #+#    #+#              #
-#    Updated: 2025/02/09 01:23:14 by bfleury          ###   ########.fr        #
+#    Updated: 2025/02/09 13:38:16 by bfleury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME				= libftprintf.a
-
-PRINTF				= libprintf.a
-
-LIB					= libft.a
-LIB_DIR				= libft
 
 CC					= cc
 CFLAGS				= -Wall -Wextra -Werror
@@ -25,90 +20,22 @@ FILES				= ft_printf.c			\
 					ft_printf_utils.c		\
 					ft_printf_utils_hexa.c
 
-LIB_FILES			= ft_atoi.c				\
-					ft_bzero.c				\
-					ft_calloc.c				\
-					ft_isalnum.c			\
-					ft_isalpha.c			\
-					ft_isascii.c			\
-					ft_isdigit.c			\
-					ft_isprint.c			\
-					ft_itoa.c				\
-					ft_memchr.c				\
-					ft_memcmp.c				\
-					ft_memcpy.c				\
-					ft_memmove.c			\
-					ft_memset.c				\
-					ft_putchar_fd.c			\
-					ft_putendl_fd.c			\
-					ft_putnbr_fd.c			\
-					ft_putstr_fd.c			\
-					ft_split.c				\
-					ft_strchr.c				\
-					ft_strdup.c				\
-					ft_striteri.c			\
-					ft_strjoin.c			\
-					ft_strlcat.c			\
-					ft_strlcpy.c			\
-					ft_strlen.c				\
-					ft_strmapi.c			\
-					ft_strncmp.c			\
-					ft_strnstr.c			\
-					ft_strrchr.c			\
-					ft_strtrim.c			\
-					ft_substr.c				\
-					ft_tolower.c			\
-					ft_toupper.c
-
-LIB_B_FILES			= ft_lstadd_back.c		\
-					ft_lstadd_front.c		\
-					ft_lstclear.c			\
-					ft_lstdelone.c			\
-					ft_lstiter.c			\
-					ft_lstlast.c			\
-					ft_lstmap.c				\
-					ft_lstnew.c				\
-					ft_lstsize.c
-
 SRCS_DIR			= srcs
 SRCS				= $(addprefix $(SRCS_DIR)/, $(FILES))
 
 OBJS_DIR			= objs
 OBJS				= $(FILES:%.c=$(OBJS_DIR)/%.o)
 
-LIB_SRCS_DIR		= $(LIB_DIR)/srcs
-LIB_SRCS			= $(addprefix $(LIB_SRCS_DIR)/, $(LIB_FILES))
+all:				$(NAME)
 
-LIB_B_SRCS_DIR		= $(LIB_DIR)/bonus_srcs
-LIB_SRCS			+= $(addprefix $(LIB_B_SRCS_DIR)/, $(LIB_B_FILES))
-
-LIB_OBJS			= $(LIB_FILES:%.c=$(OBJS_DIR)/%.o)
-LIB_OBJS			+= $(LIB_B_FILES:%.c=$(OBJS_DIR)/%.o)
-
-$(NAME):			$(OBJS_DIR) $(OBJS) $(LIB_OBJS)
-					@ar rc $(NAME) $(OBJS) $(LIB_OBJS)
+$(NAME):			$(OBJS_DIR) $(OBJS)
+					@ar rc $(NAME) $(OBJS)
 					@ranlib $(NAME)
-
-$(PRINTF):			$(OBJS_DIR) $(OBJS)
-					@ar rc $(PRINTF) $(OBJS)
-					@ranlib $(PRINTF)
-
-$(LIB):				$(OBJS_DIR) $(LIB_OBJS)
-					@ar rc $(LIB) $(LIB_OBJS)
-					@ranlib $(LIB)
-
-all:				$(NAME) $(PRINTF) $(LIB)
 
 $(OBJS_DIR):
 					@mkdir -p objs
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
-					@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_DIR)/%.o:	$(LIB_SRCS_DIR)/%.c
-					@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS_DIR)/%.o:	$(LIB_B_SRCS_DIR)/%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

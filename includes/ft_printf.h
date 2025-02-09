@@ -6,7 +6,7 @@
 /*   By: bfleury <bfleury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 00:12:01 by bfleury           #+#    #+#             */
-/*   Updated: 2025/02/09 00:32:37 by bfleury          ###   ########.fr       */
+/*   Updated: 2025/02/09 13:39:17 by bfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "../libft/includes/libft.h"
 
 int		ft_printf(const char *str, ...);
 
